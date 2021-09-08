@@ -20,9 +20,7 @@ $ git clone git@github.com:apache/incubator-teaclave-trustzone-sdk.git
 $ cd incubator-teaclave-trustzone-sdk
 $ git submodule update --init
 $ (cd rust/compiler-builtins && git submodule update --init libm)
-$ (cd rust/rust && git submodule update --init src/llvm-project)
-$ (cd rust/rust && git submodule update --init library/stdarch)
-$ (cd rust/rust && git submodule update --init library/backtrace)
+$ (cd ../rust && git submodule update --init src/llvm-project && git submodule update --init library/stdarch && git submodule update --init library/backtrace)
 
 # install dependencies
 $ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
@@ -35,14 +33,14 @@ $ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
         rsync unzip uuid-dev xdg-utils xterm xz-utils zlib1g-dev
 
 # install Rust and select a proper version
-$ curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly-2019-07-08
+$ curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly-2021-09-06
 $ source $HOME/.cargo/env
 $ rustup component add rust-src && rustup target install aarch64-unknown-linux-gnu arm-unknown-linux-gnueabihf
 
 # install Xargo
 $ rustup default 1.44.0 && cargo +1.44.0 install xargo
 # switch to nightly
-$ rustup default nightly-2019-07-08
+$ rustup default nightly-2021-09-06
 ```
 
 Before building examples, the environment should be properly setup.
