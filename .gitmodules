@@ -10,11 +10,11 @@
 [submodule "rust/rust"]
 	path = rust/rust
 	url = https://github.com/RMheng/rust.git
-	branch = master
+	branch = v1.55.0
 [submodule "rust/libc"]
 	path = rust/libc
 	url = https://github.com/RMheng/libc.git
-	branch = v0.2.99
+	branch = v0.2.93
 [submodule "rust/compiler-builtins"]
 	path = rust/compiler-builtins
 	url = https://github.com/RMheng/compiler-builtins.git
