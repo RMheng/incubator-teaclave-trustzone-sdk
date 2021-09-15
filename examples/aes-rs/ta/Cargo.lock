@@ -16,7 +16,7 @@ checksum = "805026a5d0141ffc30abb3be3173848ad46a1b1664fe632428479619a3644d77"
 
 [[package]]
 name = "libc"
-version = "0.2.99"
+version = "0.2.93"
 
 [[package]]
 name = "optee-utee"
