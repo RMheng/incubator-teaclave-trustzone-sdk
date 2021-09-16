@@ -27,7 +27,7 @@ dependencies = [
  "libc",
  "optee-utee-macros",
  "optee-utee-sys",
- "uuid",
+ "uuid 0.8.2",
 ]
 
 [[package]]
@@ -58,7 +58,7 @@ dependencies = [
 name = "proto"
 version = "0.1.0"
 dependencies = [
- "uuid",
+ "uuid 0.7.4",
 ]
 
 [[package]]
@@ -89,7 +89,7 @@ dependencies = [
  "optee-utee",
  "optee-utee-sys",
  "proto",
- "uuid",
+ "uuid 0.7.4",
 ]
 
 [[package]]
@@ -97,6 +97,12 @@ name = "unicode-xid"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fc72304796d0818e357ead4e000d19c9c174ab23dc11093ac919054d20a6a7fc"
+
+[[package]]
+name = "uuid"
+version = "0.7.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "90dbc611eb48397705a6b0f6e917da23ae517e4d127123d2cf7674206627d32a"
 
 [[package]]
 name = "uuid"
