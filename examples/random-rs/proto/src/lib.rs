@@ -15,6 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
+#![feature(restricted_std)]
 pub enum Command {
     RandomGenerator,
     Unknown,

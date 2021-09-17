@@ -16,7 +16,7 @@
 // under the License.
 
 #![allow(non_camel_case_types, non_snake_case)]
-
+#![feature(restricted_std)]
 pub use tee_api::*;
 pub use tee_api_defines::*;
 pub use tee_api_types::*;
