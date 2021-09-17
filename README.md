@@ -18,30 +18,25 @@ Alternatively, you can use a docker container built with our [Dockerfile](Docker
 # clone the project and initialize related submodules
 $ git clone git@github.com:apache/incubator-teaclave-trustzone-sdk.git
 $ cd incubator-teaclave-trustzone-sdk
-$ git submodule update --init
-$ (cd rust/compiler-builtins && git submodule update --init libm)
-$ (cd ../rust && git submodule update --init src/llvm-project && git submodule update --init library/stdarch && git submodule update --init library/backtrace)
-
-# install dependencies
-$ sudo apt-get install android-tools-adb android-tools-fastboot autoconf \
-        automake bc bison build-essential ccache cscope curl device-tree-compiler \
-        expect flex ftp-upload gdisk iasl libattr1-dev libc6:i386 libcap-dev \
-        libfdt-dev libftdi-dev libglib2.0-dev libhidapi-dev libncurses5-dev \
-        libpixman-1-dev libssl-dev libstdc++6:i386 libtool libz1:i386 make \
-        mtools netcat python-crypto python3-crypto python-pyelftools \
-        python3-pycryptodome python3-pyelftools python-serial python3-serial \
-        rsync unzip uuid-dev xdg-utils xterm xz-utils zlib1g-dev
-
-# install Rust and select a proper version
-$ curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly-2021-09-06
-$ source $HOME/.cargo/env
-$ rustup component add rust-src && rustup target install aarch64-unknown-linux-gnu arm-unknown-linux-gnueabihf
-
-# install Xargo
-$ rustup default 1.44.0 && cargo +1.44.0 install xargo
-# switch to nightly
-$ rustup default nightly-2021-09-06
+# initialize related submodules and install Rust environment
+$ ./setup.sh
 ```
+
+By default, the OPTEE_DIR is incubator-teaclave-trustzone-sdk/optee/.
+
+``` sh
+# initialize OP-TEE submodule
+$ git submodule update --init -- optee
+```
+
+If you already have OP-TEE repository cloned, you can set OP-TEE root directory:
+
+``` sh
+$ export OPTEE_DIR=path/to/your/optee/root/directory
+```
+Note that your OPTEE root directory should have build/, optee_os/ and optee_client/ as sub-directory.
+
+
 
 Before building examples, the environment should be properly setup.
 
@@ -115,3 +110,4 @@ Here is the BiBTeX record for your reference.
 
 Teaclave TrustZone SDK is distributed under the Apache License (Version 2.0).
 See [LICENSE](LICENSE) for details.
+
