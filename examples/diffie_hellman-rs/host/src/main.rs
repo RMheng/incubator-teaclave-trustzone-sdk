@@ -37,7 +37,6 @@ fn generate_key(session: &mut Session) -> Result<(Vec<u8>, Vec<u8>)> {
 
     let mut operation = Operation::new(0, p0, p1, p2, p3);
     session.invoke_command(Command::GenerateKey as u32, &mut operation)?;
-
     let public_size = operation.parameters().1.a() as usize;
     let private_size = operation.parameters().1.b() as usize;
     let mut public_res = vec![0u8; public_size];

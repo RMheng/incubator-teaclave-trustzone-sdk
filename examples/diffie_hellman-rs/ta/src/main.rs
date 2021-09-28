@@ -64,31 +64,23 @@ fn generate_key(dh: &mut DiffieHellman, params: &mut Parameters) -> Result<()> {
     let mut p1 = unsafe { params.1.as_value().unwrap() };
     let mut p2 = unsafe { params.2.as_memref().unwrap() };
     let mut p3 = unsafe { params.3.as_memref().unwrap() };
-
     // Extract prime and base from parameters
     let prime_base_vec = p0.buffer();
+    
     let prime_slice = &prime_base_vec[..KEY_SIZE/8];
     let base_slice = &prime_base_vec[KEY_SIZE/8..];
-
     let attr_prime = AttributeMemref::from_ref(AttributeId::DhPrime, prime_slice);
     let attr_base = AttributeMemref::from_ref(AttributeId::DhBase, base_slice);
-
     // Generate key pair
     dh.key = TransientObject::allocate(TransientObjectType::DhKeypair, KEY_SIZE).unwrap();
     let mut public_buffer = p2.buffer();
     let mut private_buffer = p3.buffer();
-
-    dh.key
-        .generate_key(KEY_SIZE, &[attr_prime.into(), attr_base.into()])?;
-    let mut key_size = dh
-        .key
-        .ref_attribute(AttributeId::DhPublicValue, &mut public_buffer)
-        .unwrap();
+    dh.key.generate_key(KEY_SIZE, &[attr_prime.into(), attr_base.into()])?;
+    let mut key_size = dh.key.ref_attribute(AttributeId::DhPublicValue, &mut public_buffer).unwrap();
+    //let key_size = 128;
     p1.set_a(key_size as u32);
-    key_size = dh
-        .key
-        .ref_attribute(AttributeId::DhPrivateValue, &mut private_buffer)
-        .unwrap();
+    //let key_size = 128;
+    key_size = dh.key.ref_attribute(AttributeId::DhPrivateValue, &mut private_buffer).unwrap();
     p1.set_b(key_size as u32);
     Ok(())
 }
@@ -122,7 +114,6 @@ fn invoke_command(
     cmd_id: u32,
     params: &mut Parameters,
 ) -> Result<()> {
-    trace_println!("[+] TA invoke command");
     match Command::from(cmd_id) {
         Command::GenerateKey => {
             return generate_key(sess_ctx, params);
