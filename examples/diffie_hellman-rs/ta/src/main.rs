@@ -114,6 +114,7 @@ fn invoke_command(
     cmd_id: u32,
     params: &mut Parameters,
 ) -> Result<()> {
+    trace_println!("[+] TA invoke command");
     match Command::from(cmd_id) {
         Command::GenerateKey => {
             return generate_key(sess_ctx, params);

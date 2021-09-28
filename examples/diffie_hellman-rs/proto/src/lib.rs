@@ -24,7 +24,6 @@ pub enum Command {
 impl From<u32> for Command {
     #[inline]
     fn from(value: u32) -> Command {
-        println!("invoke command");
         match value {
             0 => Command::GenerateKey,
             1 => Command::DeriveKey,

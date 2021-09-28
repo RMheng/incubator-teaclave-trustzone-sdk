@@ -30,4 +30,4 @@ proto = { path = "../proto" }
 optee-teec = { path = "../../../optee-teec" }
 
 [profile.release]
-#lto = true
+lto = true
